@@ -64,6 +64,14 @@ public/                   # 静的アセット
 - カスタムカラー・スペーシング等は `globals.css` の `@theme` ブロックで定義する
 - レスポンシブは Mobile First（`sm:` `md:` `lg:` の順）
 
+### スタイリング方針
+
+- カラー・背景・レイアウトは Tailwind ユーティリティを使う
+- フォントサイズ・セクション余白は SCSS の `myClamp()` を使う
+- カラー変数は `src/app/globals.css` の `@theme` で定義する
+- `myClamp` 関数は `src/styles/mixins.scss` で定義する
+- フォントサイズクラス（`.text-hero` 等）は `src/styles/typography.scss` で定義する
+
 ### TypeScript
 
 - `strict: true` を維持する
