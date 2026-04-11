@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Syne } from "next/font/google";
 import "./globals.css";
-import "@/styles/typography.scss";
+import "@/styles/index.scss";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 

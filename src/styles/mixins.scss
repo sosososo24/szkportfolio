@@ -1,8 +1,8 @@
 @function myClamp($min, $max, $min-view-port: 375, $max-view-port: 1366) {
   $variable-part: calc(($max - $min) / ($max-view-port - $min-view-port));
-  $constant: calc(($max - $max-view-port * $variable-part) / 10);
-  $min-rem: calc($min / 10 * 1rem);
-  $max-rem: calc($max / 10 * 1rem);
+  $constant: calc(($max - $max-view-port * $variable-part) / 16);
+  $min-rem: calc($min / 16 * 1rem);
+  $max-rem: calc($max / 16 * 1rem);
   $variable-rem: calc($constant * 1rem);
   $variable-vw: calc(100 * $variable-part * 1vw);
   @return clamp($min-rem, $variable-rem + $variable-vw, $max-rem);
