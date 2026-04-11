@@ -34,7 +34,10 @@ src/
     types.ts              # 共通型定義
   utils/
     animations/           # GSAP / Motion アニメーション関数群
-  styles/                 # globals.css 等
+  styles/
+    mixins.scss           # myClamp関数
+    typography.scss       # フォントサイズクラス
+    base.scss             # @apply まとめ（コンテナ等）
 public/                   # 静的アセット
 ```
 
@@ -71,6 +74,7 @@ public/                   # 静的アセット
 - カラー変数は `src/app/globals.css` の `@theme` で定義する
 - `myClamp` 関数は `src/styles/mixins.scss` で定義する
 - フォントサイズクラス（`.text-hero` 等）は `src/styles/typography.scss` で定義する
+- `@apply` を使うクラス（コンテナ等）は `src/styles/base.scss` で定義する
 
 ### TypeScript
 

@@ -1,0 +1,15 @@
+.inner-sm {
+  @apply mx-auto w-[90%] max-w-[76.8rem];
+}
+
+.inner-md {
+  @apply mx-auto w-[90%] max-w-[128rem];
+}
+
+.inner-lg {
+  @apply mx-auto w-[90%] max-w-[144rem];
+}
+
+.inner-full {
+  @apply mx-auto w-full max-w-[256rem];
+}
