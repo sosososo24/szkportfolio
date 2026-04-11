@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Noto_Sans_JP, Syne } from "next/font/google";
 import "./globals.css";
 import "@/styles/typography.scss";
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto",
@@ -28,7 +30,11 @@ export default function RootLayout({
       lang="ja"
       className={`${notoSansJP.variable} ${syne.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
