@@ -1,0 +1,78 @@
+---
+description: szk-portfolio 全体に適用される一般ルール
+alwaysApply: true
+---
+
+# szk-portfolio — 一般ルール
+
+## プロジェクト概要
+
+鈴木翔梧のポートフォリオサイト。Next.js 16 App Router + TypeScript + Tailwind CSS v4 で構築。
+
+## 作業スタイル（最優先）
+
+- **コードを書く前に必ず日本語で変更内容を説明し、承認を得る**
+- **複数ファイルを変更する場合は 1 ファイルずつ確認を取る**
+- 指示されていないリファクタリング・機能追加・「改善」は行わない
+- 既存コードを必ず読んでから変更する
+
+## 技術スタック
+
+- Next.js 16.2.3 (App Router) — `node_modules/next/dist/docs/` を参照すること
+- React 19
+- TypeScript 5 (`strict: true`)
+- Tailwind CSS v4
+- GSAP + Motion（アニメーション）
+- microCMS（CMS）
+- Vercel（デプロイ）
+
+## ディレクトリ構成
+
+```
+src/
+  app/            # App Router ルート（page.tsx / layout.tsx は default export）
+  components/
+    ui/           # 汎用 UI コンポーネント
+    layout/       # ヘッダー・フッター
+    sections/     # ページセクション
+  lib/            # microCMS クライアント・型
+  utils/
+    animations/   # GSAP / Motion 関数
+```
+
+パスエイリアス: `@/*` → `./src/*`
+
+## コーディング規約
+
+### コンポーネント
+
+- Named Export を基本とする（`app/` の page / layout のみ default export）
+- ファイル名・ディレクトリ名: kebab-case
+- コンポーネント名: PascalCase
+- `interface` を優先、Union 型が必要な場合のみ `type`
+- `any` 禁止。不明な型は `unknown` + type guard
+
+### React / Next.js
+
+- Server Component を基本とする
+- `"use client"` は末端コンポーネントのみに付与する
+- データフェッチは Server Component 内で行う
+- 画像: `next/image`、フォント: `next/font`
+
+### Tailwind CSS v4
+
+- ユーティリティクラスを直接記述。`@apply` は最小限
+- カスタム値は `globals.css` の `@theme` で定義
+- Mobile First: `sm:` → `md:` → `lg:` の順
+
+### TypeScript
+
+- `strict: true` を維持
+- 非 null アサーション（`!`）使用禁止
+- 型引数は明示する
+
+## アニメーション原則
+
+- アニメーション関数は `src/utils/animations/` に切り出す
+- `prefers-reduced-motion` を必ず尊重する
+- 詳細は `gsap.mdc` を参照

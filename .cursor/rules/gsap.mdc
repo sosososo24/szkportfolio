@@ -1,0 +1,99 @@
+---
+description: GSAP / Motion を使ったアニメーション実装ルール
+globs: src/utils/animations/**
+---
+
+# GSAP + Motion アニメーションルール
+
+## 基本方針
+
+- アニメーションロジックは **`src/utils/animations/`** に関数として切り出す
+- コンポーネント内に `gsap.to(...)` 等を直接書かない
+- `useGSAP`（`@gsap/react`）を使い、クリーンアップを必ず行う
+
+## ファイル構成
+
+```
+src/utils/animations/
+  gsap.ts      # GSAP ベースのアニメーション関数
+  motion.ts    # Motion（コンポーネントレベルのトランジション）
+  index.ts     # re-export
+```
+
+## GSAP 実装パターン
+
+```ts
+// src/utils/animations/gsap.ts
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export function fadeInUp(target: gsap.TweenTarget, delay = 0) {
+  return gsap.fromTo(target, { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay });
+}
+```
+
+```tsx
+// コンポーネント内での使い方
+'use client';
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
+import { fadeInUp } from '@/utils/animations/gsap';
+
+export function AnimatedSection() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      if (!ref.current) return;
+      fadeInUp(ref.current);
+    },
+    { scope: ref }
+  );
+
+  return <div ref={ref}>...</div>;
+}
+```
+
+## Motion 実装パターン
+
+Motion はコンポーネントレベルの小さなトランジション（hover, tap, visibility 切替）に使う。
+
+```tsx
+import { motion } from 'motion/react';
+
+// ホバー・タップ等の小さなトランジションに使う
+<motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
+  ...
+</motion.button>;
+```
+
+## prefers-reduced-motion の対応（必須）
+
+```ts
+export function getReducedMotion(): boolean {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
+// 使用例
+if (!getReducedMotion()) {
+  fadeInUp(ref.current);
+}
+```
+
+ScrollTrigger を使う場合も同様に分岐する。
+
+## ScrollTrigger ルール
+
+- `pin: true` はモバイル UX を考慮して慎重に使う
+  （横スクロールセクション等、必要な場合は許容する）
+- `scrub` は `true` より数値（例: `scrub: 1`）で慣性を付ける
+- `markers: true` は開発時のみ使用し、本番コードには残さない
+
+## インストールコマンド（未インストール）
+
+```bash
+npm install gsap @gsap/react
+npm install motion
+```
