@@ -2,11 +2,11 @@
 
 @theme {
   /* Color */
-  --color-white: #FFFFFF;
+  --color-white: #ffffff;
   --color-black: #282828;
-  --color-orange: #F8A450;
-  --color-thin-orange: #FFF7DE;
-  --color-gray: #BFBFBF;
+  --color-orange: #f8a450;
+  --color-thin-orange: #fff7de;
+  --color-gray: #bfbfbf;
 
   /* Font */
   --font-noto: var(--font-noto);
