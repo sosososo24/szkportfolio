@@ -30,9 +30,9 @@ export default function RootLayout({
       lang="ja"
       className={`${notoSansJP.variable} ${syne.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col text-black">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-16 md:pt-20">{children}</main>
         <Footer />
       </body>
     </html>

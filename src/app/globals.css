@@ -11,4 +11,29 @@
   /* Font */
   --font-noto: var(--font-noto);
   --font-syne: var(--font-syne);
+
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ハンバーガーメニュー — 右上起点の円形展開 */
+@keyframes menu-overlay-in {
+  from { clip-path: circle(0% at top right); }
+  to   { clip-path: circle(150% at top right); }
+}
+
+@keyframes menu-overlay-out {
+  from { clip-path: circle(150% at top right); }
+  to   { clip-path: circle(0% at top right); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-state] { animation: none !important; }
 }
