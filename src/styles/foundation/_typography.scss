@@ -1,1 +1,21 @@
 @use "./mixins" as *;
+
+.text-hero {
+  font-size: myClamp(36, 80);
+}
+
+.text-mv-sub {
+  font-size: myClamp(16, 24);
+}
+
+.text-statement-title {
+  font-size: myClamp(32, 64);
+}
+
+.text-statement-lead {
+  font-size: myClamp(18, 30);
+}
+
+.text-statement-body {
+  font-size: myClamp(14, 18);
+}
