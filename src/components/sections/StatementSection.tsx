@@ -36,7 +36,7 @@ export function StatementSection() {
               <br />
               事業と共に成長するWebサイトを育てる。
             </p>
-            <div className="flex flex-col gap-6 text-statement-body font-noto font-normal text-black leading-[1.5]">
+            <div className="flex flex-col gap-6 text-statement-body font-noto font-normal text-black leading-normal">
               <p>はじめまして。Webデザイナー・コーダーの鈴木翔梧と申します。</p>
               <p>
                 実務において私が最も大切にしているのは、「ユーザーを迷わせないシンプルなデザイン」と「将来の更新を見据えたコンポーネント設計」です。

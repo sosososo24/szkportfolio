@@ -39,7 +39,7 @@ export function animateLoading(
     : window.innerHeight * 0.25;
   const scale = hasTarget && toRect ? toRect.width / fromRect.width : 0.5;
 
-  // 初期状態: 全パスの fill を透明にしてストロークのみ
+  // 初期状態: 全パスの fill を透明にしてストロークのみ、ラッパーを表示
   gsap.set(paths, {
     attr: {
       "fill-opacity": 0,
@@ -48,6 +48,7 @@ export function animateLoading(
       "stroke-opacity": 0,
     },
   });
+  gsap.set(bgWrapper, { opacity: 1 });
 
   const tl = gsap.timeline();
 

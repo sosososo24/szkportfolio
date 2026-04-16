@@ -23,7 +23,7 @@ export function LoadingOverlay({ onComplete }: Props) {
       ref={overlayRef}
       className="fixed inset-0 z-[100] bg-thin-orange flex items-center justify-center"
     >
-      <div ref={bgWrapperRef} className="w-[90%]">
+      <div ref={bgWrapperRef} className="w-[90%]" style={{ opacity: 0 }}>
         <BgText fill="#282828" className="w-full" />
       </div>
     </div>
