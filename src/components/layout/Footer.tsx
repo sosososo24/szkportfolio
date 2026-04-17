@@ -15,6 +15,7 @@ export function Footer() {
         text="THANK YOU FOR YOUR TIME AND CONSIDERATION"
         bgColor="#f8a450"
         fontSize="2rem"
+        repeat={2}
         className="absolute top-0 left-0 w-full -translate-y-1/2 -rotate-1 z-20"
       />
 
@@ -38,6 +39,7 @@ export function Footer() {
         bgColor="#282828"
         fontSize="3rem"
         speed={0.7}
+        repeat={4}
       />
     </footer>
   );

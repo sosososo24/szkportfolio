@@ -84,6 +84,7 @@ export function MvSection({ animateOnMount = true }: Props) {
         text="DOWN SCROLL"
         bgColor="#f8a450"
         fontSize="2rem"
+        repeat={5}
         className="transform translate-y-[-25%] rotate-1"
       />
     </>

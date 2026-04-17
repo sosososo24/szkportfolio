@@ -16,10 +16,8 @@ interface Props {
   className?: string;
   items?: TickerItem[];
   speed?: number;
+  repeat?: number;
 }
-
-// 1セットあたりのアイテム数（ビューポートを十分に埋める数）
-const ITEMS_PER_LOOP = 8;
 
 export function ScrollTicker({
   text = "DOWN SCROLL",
@@ -28,10 +26,11 @@ export function ScrollTicker({
   className = "",
   items,
   speed = 1,
+  repeat = 4,
 }: Props) {
   const baseItems: TickerItem[] = items
-    ? Array.from({ length: ITEMS_PER_LOOP }, (_, i) => items[i % items.length])
-    : Array.from({ length: ITEMS_PER_LOOP }, (_, i) => ({
+    ? Array.from({ length: repeat }, (_, i) => items[i % items.length])
+    : Array.from({ length: repeat }, (_, i) => ({
         text,
         color: i % 2 === 0 ? "#282828" : "#ffffff",
       }));

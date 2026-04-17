@@ -40,6 +40,7 @@ export function StatementSection() {
         bgColor="#282828"
         fontSize="3rem"
         speed={0.7}
+        repeat={4}
         className="absolute bottom-0 left-0 w-full translate-y-[-50%]"
       />
     </section>
