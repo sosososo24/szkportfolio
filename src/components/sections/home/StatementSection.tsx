@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { SectionTitle } from "@/components/ui/SectionTitle";
 import { ScrollTicker } from "@/components/ui/ScrollTicker";
 
 const SKILLS_TICKER_ITEMS = [
@@ -12,22 +12,7 @@ export function StatementSection() {
       <div className="inner-md pt-20">
         <div className="flex flex-col md:flex-row md:items-center gap-10 md:gap-[81px]">
           {/* Left: Logo + Title */}
-          <div className="flex flex-col gap-4 shrink-0">
-            <Image
-              src="/images/statement-mark.svg"
-              alt=""
-              width={70}
-              height={21}
-              className="h-auto"
-            />
-            <h2 className="text-statement-title font-syne font-extrabold text-black leading-none">
-              MY
-              <br />
-              STATE
-              <br />
-              MENT
-            </h2>
-          </div>
+          <SectionTitle lines={["MY", "STATE", "MENT"]} />
 
           {/* Right: Catchcopy + Body */}
           <div className="flex flex-1 flex-col gap-8 min-w-0">

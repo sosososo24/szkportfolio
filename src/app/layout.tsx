@@ -4,6 +4,7 @@ import "./globals.css";
 import "@/styles/index.scss";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto",
@@ -31,9 +32,11 @@ export default function RootLayout({
       className={`${notoSansJP.variable} ${syne.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col text-black">
-        <Header />
-        <main className="flex-1 pt-16 md:pt-28">{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Header />
+          <main className="flex-1 pt-16 md:pt-28">{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

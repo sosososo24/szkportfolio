@@ -34,6 +34,10 @@
   to   { clip-path: circle(0% at top right); }
 }
 
+body {
+  scrollbar-gutter: stable;
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-state] { animation: none !important; }
 }
