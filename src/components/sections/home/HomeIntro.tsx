@@ -8,11 +8,14 @@ export function HomeIntro() {
   const [loadingDone, setLoadingDone] = useState(false);
 
   useEffect(() => {
-    if (loadingDone) return;
+    if (loadingDone) {
+      document.documentElement.style.overflow = "";
+      return;
+    }
 
-    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [loadingDone]);
 

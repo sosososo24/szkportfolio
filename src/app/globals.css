@@ -34,7 +34,8 @@
   to   { clip-path: circle(0% at top right); }
 }
 
-body {
+html {
+  overflow-x: clip;
   scrollbar-gutter: stable;
 }
 
