@@ -86,7 +86,7 @@ export function ProfileSection() {
   return (
     <>
       {/* プロフィール + キャリア */}
-      <section className="bg-white py-16 px-4 md:px-10 md:py-20">
+      <section id="profile" className="bg-white py-16 px-4 md:px-10 md:py-20">
         <div className="inner-md">
           <div className="flex flex-col md:flex-row gap-10 md:gap-20">
             {/* 左: プロフィールカード（デスクトップで sticky 固定）*/}
