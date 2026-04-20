@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { type Work } from "@/lib/works-data";
+import { type Work } from "@/lib/microcms";
 
 interface Props {
   work: Work;
@@ -12,7 +12,7 @@ export function WorkDetailSection({ work }: Props) {
       <div className="inner-md w-full">
         <div className="relative w-full aspect-video">
           <Image
-            src={work.imageSrc}
+            src={work.thumb.url}
             alt={work.title}
             fill
             sizes="(max-width: 1280px) 100vw, 1200px"
@@ -23,9 +23,9 @@ export function WorkDetailSection({ work }: Props) {
       </div>
 
       {/* VIEW WEB SITE ボタン */}
-      {work.siteUrl && (
+      {work.siteurl && (
         <a
-          href={work.siteUrl}
+          href={work.siteurl}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-6 border border-black px-12 py-[30px] group hover:bg-black transition-colors duration-300"
@@ -71,7 +71,7 @@ export function WorkDetailSection({ work }: Props) {
                 クライアント
               </dt>
               <dd className="font-noto font-medium text-[14px] text-black leading-normal">
-                {work.company}
+                {work.client}
               </dd>
             </div>
             <div className="flex gap-5 items-start border-t border-b border-black py-5">
@@ -79,16 +79,16 @@ export function WorkDetailSection({ work }: Props) {
                 担当内容
               </dt>
               <dd className="font-noto font-medium text-[14px] text-black leading-normal">
-                {work.role}
+                {work.job.join(" / ")}
               </dd>
             </div>
-            {work.duration && (
+            {work.period && (
               <div className="flex gap-5 items-start border-b border-black py-5">
                 <dt className="font-noto font-medium text-[14px] text-black leading-normal min-w-[100px] shrink-0">
                   制作期間
                 </dt>
                 <dd className="font-noto font-medium text-[14px] text-black leading-normal">
-                  {work.duration}
+                  {work.period}
                 </dd>
               </div>
             )}
@@ -97,7 +97,7 @@ export function WorkDetailSection({ work }: Props) {
                 使用ツール
               </dt>
               <dd className="flex flex-wrap gap-[7px]">
-                {work.tags.map((tag) => (
+                {work.tool.map((tag) => (
                   <span
                     key={tag}
                     className="font-noto font-normal text-[12px] text-black leading-normal bg-black/10 px-2 py-0.5"
@@ -111,16 +111,17 @@ export function WorkDetailSection({ work }: Props) {
         </div>
 
         {/* 右：コンテンツセクション */}
-        {work.sections && work.sections.length > 0 && (
+        {work.detail && work.detail.length > 0 && (
           <div className="flex flex-col gap-[46px] flex-1">
-            {work.sections.map((section, i) => (
+            {work.detail.map((section, i) => (
               <div key={i} className="flex flex-col gap-4">
                 <h2 className="font-noto font-bold text-[25px] text-black leading-normal">
-                  {section.heading}
+                  {section.title}
                 </h2>
-                <p className="font-noto font-medium text-[18px] text-black leading-relaxed">
-                  {section.body}
-                </p>
+                <div
+                  className="font-noto font-medium text-[18px] text-black leading-relaxed"
+                  dangerouslySetInnerHTML={{ __html: section.detail }}
+                />
               </div>
             ))}
           </div>

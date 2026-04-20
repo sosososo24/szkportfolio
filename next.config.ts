@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
     "@splidejs/react-splide",
     "@splidejs/splide-extension-auto-scroll",
   ],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.microcms-assets.io",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

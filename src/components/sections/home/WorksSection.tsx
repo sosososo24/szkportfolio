@@ -7,7 +7,7 @@ import Link from "next/link";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Button } from "@/components/ui/Button";
 import { animateWorksBackground } from "@/utils/animations/worksSection";
-import { WORKS } from "@/lib/works-data";
+import { type Work } from "@/lib/microcms";
 
 function WorkItemArrow() {
   return (
@@ -32,9 +32,13 @@ function WorkItemArrow() {
   );
 }
 
-export function WorksSection() {
+interface Props {
+  works: Work[];
+}
+
+export function WorksSection({ works }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
-  const featured = WORKS.find((w) => w.featured) ?? WORKS[0];
+  const featured = works[0];
 
   useGSAP(
     () => {
@@ -43,6 +47,8 @@ export function WorksSection() {
     },
     { scope: sectionRef, dependencies: [] },
   );
+
+  if (!featured) return null;
 
   return (
     <section
@@ -69,7 +75,7 @@ export function WorksSection() {
           {/* Featured image */}
           <div className="relative w-full md:w-[47%] aspect-567/455 shrink-0">
             <Image
-              src={featured.imageSrc}
+              src={featured.thumb.url}
               alt={featured.title}
               fill
               className="object-cover"
@@ -79,7 +85,7 @@ export function WorksSection() {
 
           {/* Work list */}
           <div className="flex flex-col gap-2.5 flex-1">
-            {WORKS.map((work) => (
+            {works.map((work) => (
               <Link
                 key={work.id}
                 href={`/works/${work.id}`}
@@ -90,18 +96,18 @@ export function WorksSection() {
                     {/* Text info */}
                     <div className="flex flex-col">
                       <span className="font-noto font-medium text-[18px] leading-normal text-white group-hover:text-orange transition-colors duration-500">
-                        {work.company}
+                        {work.client}
                       </span>
                       <span className="font-noto font-black text-[28px] leading-normal text-white group-hover:text-orange transition-colors duration-500">
                         {work.title}
                       </span>
                       <span className="font-noto font-normal text-[16px] text-gray leading-normal">
-                        {work.role}
+                        {work.job.join(" / ")}
                       </span>
                     </div>
                     {/* Tags */}
                     <div className="flex flex-wrap gap-[7px]">
-                      {work.tags.map((tag) => (
+                      {work.tool.map((tag) => (
                         <span
                           key={tag}
                           className="font-noto font-normal text-[12px] leading-normal px-2 py-0.5 bg-white/20 text-white group-hover:bg-orange/10 group-hover:text-orange transition-colors duration-500"

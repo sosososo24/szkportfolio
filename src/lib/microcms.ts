@@ -7,8 +7,8 @@ export const client = createClient({
 
 export interface WorkSection {
   fieldId: string;
-  heading: string;
-  body: string;
+  title: string;
+  detail: string;
 }
 
 export interface Work {
@@ -17,16 +17,14 @@ export interface Work {
   updatedAt: string;
   publishedAt: string;
   revisedAt: string;
-  company: string;
   title: string;
-  role: string;
-  tags: string[];
-  image: { url: string; width: number; height: number };
-  thumbnail: { url: string; width: number; height: number };
-  featured: boolean;
-  siteUrl?: string;
-  duration?: string;
-  sections?: WorkSection[];
+  client: string;
+  siteurl?: string;
+  thumb: { url: string; width: number; height: number };
+  period?: string;
+  tool: string[];
+  job: string[];
+  detail?: WorkSection[];
 }
 
 export async function getWorks() {
