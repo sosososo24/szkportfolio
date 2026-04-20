@@ -9,19 +9,16 @@ import { Button } from "@/components/ui/Button";
 import { animateWorksBackground } from "@/utils/animations/worksSection";
 import { WORKS } from "@/lib/works-data";
 
-function WorkItemArrow({ featured = false }: { featured?: boolean }) {
+function WorkItemArrow() {
   return (
-    <div
-      className={`w-16 h-16 rounded-full flex items-center justify-center shrink-0 ${
-        featured ? "bg-orange" : "border border-white"
-      }`}
-    >
+    <div className="w-16 h-16 rounded-full flex items-center justify-center shrink-0 border border-white group-hover:bg-orange group-hover:border-orange transition-colors duration-500">
       <svg
         width="18"
         height="18"
         viewBox="0 0 18 18"
         fill="none"
         aria-hidden="true"
+        className="rotate-45 group-hover:rotate-0 transition-transform duration-500"
       >
         <path
           d="M4 14L14 4M14 4H7M14 4V11"
@@ -83,22 +80,19 @@ export function WorksSection() {
           {/* Work list */}
           <div className="flex flex-col gap-2.5 flex-1">
             {WORKS.map((work) => (
-              <div
+              <Link
                 key={work.id}
-                className="flex flex-col border-b border-white pb-5"
+                href={`/works/${work.id}`}
+                className="group flex flex-col border-b border-white pb-5"
               >
                 <div className="flex gap-[10px] items-center">
                   <div className="flex flex-1 flex-col gap-[10px] min-w-0">
                     {/* Text info */}
                     <div className="flex flex-col">
-                      <span
-                        className={`font-noto font-medium text-[18px] leading-normal ${work.featured ? "text-orange" : "text-white"}`}
-                      >
+                      <span className="font-noto font-medium text-[18px] leading-normal text-white group-hover:text-orange transition-colors duration-500">
                         {work.company}
                       </span>
-                      <span
-                        className={`font-noto font-black text-[28px] leading-normal ${work.featured ? "text-orange" : "text-white"}`}
-                      >
+                      <span className="font-noto font-black text-[28px] leading-normal text-white group-hover:text-orange transition-colors duration-500">
                         {work.title}
                       </span>
                       <span className="font-noto font-normal text-[16px] text-gray leading-normal">
@@ -110,23 +104,17 @@ export function WorksSection() {
                       {work.tags.map((tag) => (
                         <span
                           key={tag}
-                          className={`font-noto font-normal text-[12px] leading-normal px-2 py-0.5 ${
-                            work.featured
-                              ? "bg-orange/10 text-orange"
-                              : "bg-white/20 text-white"
-                          }`}
+                          className="font-noto font-normal text-[12px] leading-normal px-2 py-0.5 bg-white/20 text-white group-hover:bg-orange/10 group-hover:text-orange transition-colors duration-500"
                         >
                           {tag}
                         </span>
                       ))}
                     </div>
                   </div>
-                  {/* Arrow link */}
-                  <Link href={`/works/${work.id}`} aria-label={work.title}>
-                    <WorkItemArrow featured={work.featured} />
-                  </Link>
+                  {/* Arrow */}
+                  <WorkItemArrow />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

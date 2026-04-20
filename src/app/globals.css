@@ -37,7 +37,6 @@
 html {
   overflow-x: clip;
   scrollbar-gutter: stable;
-  scroll-behavior: smooth;
 }
 
 @media (prefers-reduced-motion: reduce) {
