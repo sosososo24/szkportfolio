@@ -12,7 +12,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   try {
     const work = await getWork(id);
-    return { title: `${work.title} | Works` };
+    return {
+      title: work.title,
+      description: `${work.client}の「${work.title}」。担当: ${work.job.join(" / ")}。`,
+    };
   } catch {
     return { title: "Works" };
   }

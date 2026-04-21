@@ -14,7 +14,7 @@ function WorkCard({ work }: { work: Work }) {
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-      <div className="flex flex-col gap-[10px] pb-5 border-b border-black/10">
+      <div className="flex flex-col gap-[10px] pb-5 border-b border-black/10 flex-1">
         <div className="flex flex-col leading-normal">
           <span className="font-noto font-medium text-[18px] text-black">
             {work.client}

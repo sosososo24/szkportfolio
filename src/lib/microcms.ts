@@ -27,10 +27,10 @@ export interface Work {
   detail?: WorkSection[];
 }
 
-export async function getWorks() {
+export async function getWorks(limit?: number) {
   return client.getList<Work>({
     endpoint: "works",
-    queries: { orders: "-publishedAt" },
+    queries: { ...(limit !== undefined && { limit }) },
   });
 }
 

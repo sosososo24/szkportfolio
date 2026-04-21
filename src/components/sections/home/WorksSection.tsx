@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,7 +38,8 @@ interface Props {
 
 export function WorksSection({ works }: Props) {
   const sectionRef = useRef<HTMLElement>(null);
-  const featured = works[0];
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
+  const activeId = hoveredId ?? works[0]?.id;
 
   useGSAP(
     () => {
@@ -48,7 +49,7 @@ export function WorksSection({ works }: Props) {
     { scope: sectionRef, dependencies: [] },
   );
 
-  if (!featured) return null;
+  if (!works[0]) return null;
 
   return (
     <section
@@ -71,16 +72,18 @@ export function WorksSection({ works }: Props) {
         </div>
 
         {/* Content */}
-        <div className="flex flex-col gap-10 md:flex-row md:gap-14">
+        <div className="flex flex-col gap-10 md:flex-row md:gap-14 md:items-center">
           {/* Featured image */}
-          <div className="relative w-full md:w-[47%] aspect-567/455 shrink-0">
-            <Image
-              src={featured.thumb.url}
-              alt={featured.title}
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50" />
+          <div className="relative w-full md:w-[47%] aspect-video shrink-0 bg-[#000]">
+            {works.map((work) => (
+              <Image
+                key={work.id}
+                src={work.thumb.url}
+                alt={work.title}
+                fill
+                className={`object-contain transition-opacity duration-400 ${activeId === work.id ? "opacity-100" : "opacity-0"}`}
+              />
+            ))}
           </div>
 
           {/* Work list */}
@@ -90,6 +93,8 @@ export function WorksSection({ works }: Props) {
                 key={work.id}
                 href={`/works/${work.id}`}
                 className="group flex flex-col border-b border-white pb-5"
+                onMouseEnter={() => setHoveredId(work.id)}
+                onMouseLeave={() => setHoveredId(null)}
               >
                 <div className="flex gap-[10px] items-center">
                   <div className="flex flex-1 flex-col gap-[10px] min-w-0">

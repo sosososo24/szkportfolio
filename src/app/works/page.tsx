@@ -5,6 +5,8 @@ import { getWorks } from "@/lib/microcms";
 
 export const metadata: Metadata = {
   title: "Works",
+  description:
+    "鈴木翔梧が手掛けたプロジェクト一覧。UI/UXデザインからフロントエンド実装まで幅広く対応しています。",
 };
 
 export default async function WorksPage() {

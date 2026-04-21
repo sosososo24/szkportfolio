@@ -56,7 +56,7 @@ export function WorkDetailSection({ work }: Props) {
       {/* Overview + コンテンツ */}
       <div className="inner-md w-full flex flex-col gap-10 md:flex-row md:gap-14 md:items-start">
         {/* 左：Overview */}
-        <div className="flex flex-col gap-10 shrink-0 md:w-[400px]">
+        <div className="flex flex-col gap-10 shrink-0 md:w-[400px] md:sticky md:top-24">
           <div className="flex flex-col text-black">
             <span className="font-noto font-normal text-[16px] leading-normal">
               概要
