@@ -1,8 +1,8 @@
+import Image from "next/image";
+
 import { TitleMark } from "@/components/ui/TitleMark";
 
-// TODO: public/ に画像を配置して next/image に差し替えてください
-const PROFILE_IMAGE =
-  "https://www.figma.com/api/mcp/asset/77368b59-dca2-4506-9451-8d1c7e3972f9";
+const PROFILE_IMAGE = "/images/profile_portrait.png";
 
 interface CareerItem {
   year: string;
@@ -15,30 +15,27 @@ interface CareerItem {
 const CAREER_ITEMS: CareerItem[] = [
   {
     year: "2015",
-    imageSrc:
-      "https://www.figma.com/api/mcp/asset/83be5bf3-e85c-472d-afba-b100423fac2d",
+    imageSrc: "/images/profile_career2015.png",
     title: "拓殖大学卒業後、\nミサワホーム株式会社に新卒入社。",
     body: "住宅展示場での接客をはじめ、飛び込み営業やテレアポなど幅広い顧客対応を経験し、社会人としての基礎を身につける。",
   },
   {
     year: "2016",
-    imageSrc:
-      "https://www.figma.com/api/mcp/asset/89540d46-93bf-4482-8e19-d6a1a76b0417",
-    title: "学生時代に3年間アルバイトとして勤務した\nスターバックスコーヒージャパンへ入社。",
+    imageSrc: "/images/profile_career2016.png",
+    title:
+      "学生時代に3年間アルバイトとして勤務した\nスターバックスコーヒージャパンへ入社。",
     body: "早期に正社員登用され副店長に就任。繁忙店・オフィスビル店など異なる特性を持つ5店舗を経験し、新店舗立ち上げやKPI達成率エリア1位を獲得。多様な環境でチームを動かすリーダーシップを培う。",
   },
   {
     year: "2019",
-    imageSrc:
-      "https://www.figma.com/api/mcp/asset/40c2180d-f3ae-4afc-9042-88679dabf026",
+    imageSrc: "/images/profile_career2019.png",
     title: "「手に職をつけたい」という\n思いからIT業界へ転身。",
     body: "テックキャンプでWeb開発を学び制作会社へ入社。デザイン・コーディング・クライアント対応を一気通貫で担い、現在に至る。",
   },
   {
     year: "2026",
     isPresent: true,
-    imageSrc:
-      "https://www.figma.com/api/mcp/asset/ab1badb2-7c06-4d8d-a83b-9a99c11c4b40",
+    imageSrc: "/images/profile_career2026.png",
     title: "「作る」から「育てる」へ。",
     body: "「作って終わり」から一歩踏み出し、データドリブンな視点で運用・改善まで携わりたいと考え転職を決意。デザインからコーディング、ディレクションまで幅広く対応できる強みを活かし、Webの力で事業成長に貢献したいと考えています。",
   },
@@ -52,8 +49,7 @@ interface StrengthItem {
 
 const STRENGTH_ITEMS: StrengthItem[] = [
   {
-    iconSrc:
-      "https://www.figma.com/api/mcp/asset/de4d2321-e674-49f8-9601-fc4462a358c1",
+    iconSrc: "/images/profile-icon1.svg",
     title: "ユーザーに寄り添う視点",
     items: [
       "対人業務で培った顧客心理への想像力",
@@ -62,8 +58,7 @@ const STRENGTH_ITEMS: StrengthItem[] = [
     ],
   },
   {
-    iconSrc:
-      "https://www.figma.com/api/mcp/asset/6d39625d-6077-471a-8144-776468574d5b",
+    iconSrc: "/images/profile-icon2.svg",
     title: "相談しやすい対話と傾聴力",
     items: [
       "丁寧なヒアリングと認識のすり合わせ",
@@ -72,8 +67,7 @@ const STRENGTH_ITEMS: StrengthItem[] = [
     ],
   },
   {
-    iconSrc:
-      "https://www.figma.com/api/mcp/asset/2631fed5-19e2-45d5-ab77-988f3eef6510",
+    iconSrc: "/images/profile-icon3.svg",
     title: "モダン技術の自走と探求",
     items: [
       "最新技術を積極的にキャッチアップ",
@@ -92,12 +86,11 @@ export function ProfileSection() {
             {/* 左: プロフィールカード（デスクトップで sticky 固定）*/}
             <div className="flex flex-col gap-2.5 shrink-0 self-start mx-auto md:mx-0 md:sticky md:top-28">
               <div className="relative w-[280px] md:w-[320px] lg:w-[402px] aspect-square rounded-br-[60px] rounded-tl-[60px] overflow-hidden">
-                {/* TODO: public/ に画像を配置して next/image に差し替えてください */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={PROFILE_IMAGE}
                   alt="Shogo Suzuki"
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-black/10" />
                 <div className="absolute bottom-3 left-2">
@@ -129,12 +122,11 @@ export function ProfileSection() {
                   </p>
                   <div className="flex flex-col md:flex-row gap-3 md:items-center">
                     <div className="relative w-full md:flex-1 h-[218px] rounded-br-[30px] rounded-tl-[30px] overflow-hidden">
-                      {/* TODO: public/ に画像を配置して next/image に差し替えてください */}
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                      <Image
                         src={item.imageSrc}
                         alt=""
-                        className="absolute inset-0 w-full h-full object-cover"
+                        fill
+                        className="object-cover"
                       />
                       <div className="absolute inset-0 bg-black/10" />
                     </div>
@@ -164,13 +156,12 @@ export function ProfileSection() {
                 className="flex flex-1 flex-col gap-8 items-center border-[3px] border-orange rounded-2xl px-8 md:px-12 py-6"
               >
                 <div className="relative h-[120px] w-[160px] shrink-0">
-                  {/* TODO: public/ に画像を配置して next/image に差し替えてください */}
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={s.iconSrc}
                     alt=""
-                    aria-hidden="true"
-                    className="absolute inset-0 h-full w-full object-contain object-center"
+                    aria-hidden={true}
+                    fill
+                    className="object-contain object-center"
                   />
                 </div>
                 <div className="flex flex-col gap-6 w-full">
