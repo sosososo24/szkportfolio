@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 export default async function WorksPage() {
-  const { contents: works } = await getWorks();
+  const { contents: works } = await getWorks(40);
 
   return (
     <main>

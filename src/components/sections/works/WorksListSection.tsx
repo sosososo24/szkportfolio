@@ -47,9 +47,9 @@ interface Props {
 
 export function WorksListSection({ works }: Props) {
   return (
-    <section className="bg-white pt-[60px] pb-[150px] px-10">
+    <section className="bg-white pt-[60px] pb-[150px]">
       <div className="inner-md">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-10">
           {works.map((work) => (
             <WorkCard key={work.id} work={work} />
           ))}

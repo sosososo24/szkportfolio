@@ -80,12 +80,12 @@ export function ProfileSection() {
   return (
     <>
       {/* プロフィール + キャリア */}
-      <section id="profile" className="bg-white py-16 px-4 md:px-10 md:py-20">
+      <section id="profile" className="bg-white py-16 md:py-20">
         <div className="inner-md">
           <div className="flex flex-col md:flex-row gap-10 md:gap-20">
             {/* 左: プロフィールカード（デスクトップで sticky 固定）*/}
             <div className="flex flex-col gap-2.5 shrink-0 self-start mx-auto md:mx-0 md:sticky md:top-28">
-              <div className="relative w-[280px] md:w-[320px] lg:w-[402px] aspect-square rounded-br-[60px] rounded-tl-[60px] overflow-hidden">
+              <div className="relative w-full md:w-[320px] lg:w-[402px] aspect-square rounded-br-[60px] rounded-tl-[60px] overflow-hidden">
                 <Image
                   src={PROFILE_IMAGE}
                   alt="Shogo Suzuki"
@@ -147,7 +147,7 @@ export function ProfileSection() {
       </section>
 
       {/* 強みカード */}
-      <section className="bg-white pb-20 md:pb-35 px-4 md:px-10">
+      <section className="bg-white pb-20 md:pb-35">
         <div className="inner-md">
           <div className="flex flex-col md:flex-row gap-8">
             {STRENGTH_ITEMS.map((s) => (

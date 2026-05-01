@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
 import { type Work } from "@/lib/microcms";
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 
 export function WorkDetailSection({ work }: Props) {
   return (
-    <section className="bg-white flex flex-col gap-10 items-center pb-[200px] pt-[60px] px-10">
+    <section className="bg-white flex flex-col gap-10 items-center pb-[200px] pt-[60px]">
       {/* サムネイル */}
       <div className="inner-md w-full">
         <div className="relative w-full aspect-video">
@@ -24,33 +25,9 @@ export function WorkDetailSection({ work }: Props) {
 
       {/* VIEW WEB SITE ボタン */}
       {work.siteurl && (
-        <a
-          href={work.siteurl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-6 border border-black px-12 py-[30px] group hover:bg-black transition-colors duration-300"
-        >
-          <span className="font-syne font-extrabold text-[20px] leading-none text-black group-hover:text-white transition-colors duration-300 whitespace-nowrap">
-            VIEW WEB SITE
-          </span>
-          <svg
-            width="26"
-            height="26"
-            viewBox="0 0 26 26"
-            fill="none"
-            aria-hidden="true"
-            className="shrink-0"
-          >
-            <path
-              d="M5 21L21 5M21 5H11M21 5V15"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-black group-hover:text-white transition-colors duration-300"
-            />
-          </svg>
-        </a>
+        <Button href={work.siteurl} external variant="outline-black">
+          VIEW WEB SITE
+        </Button>
       )}
 
       {/* Overview + コンテンツ */}

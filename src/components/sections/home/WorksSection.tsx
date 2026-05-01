@@ -54,7 +54,7 @@ export function WorksSection({ works }: Props) {
   return (
     <section
       ref={sectionRef}
-      className="relative z-10 bg-black rounded-t-[40px] md:rounded-t-[80px] pt-20 pb-30 px-4 md:px-10"
+      className="relative z-10 bg-black rounded-t-[40px] md:rounded-t-[80px] pt-20 pb-30"
     >
       <div className="inner-md flex flex-col gap-16">
         {/* Header */}

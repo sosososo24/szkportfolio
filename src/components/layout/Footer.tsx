@@ -28,7 +28,7 @@ export function Footer() {
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center gap-5 mx-auto pt-[100px] pb-[60px]">
         <Logo className="w-25" />
-        <p className="font-syne text-sm tracking-[0.26em] text-black whitespace-nowrap">
+        <p className="font-syne text-sm tracking-[0.26em] text-black text-center">
           © 2026 Shogo Suzuki. All rights reserved.
         </p>
       </div>

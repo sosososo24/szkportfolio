@@ -46,7 +46,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col text-black">
         <AnchorScrollHandler />
         <Header />
-        <main className="flex-1 pt-16 md:pt-28">{children}</main>
+        <main className="flex-1 pt-20 md:pt-28">{children}</main>
         <Footer />
       </body>
     </html>

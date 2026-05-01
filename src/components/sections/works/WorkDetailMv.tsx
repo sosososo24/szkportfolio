@@ -5,7 +5,7 @@ interface Props {
 
 export function WorkDetailMv({ company, title }: Props) {
   return (
-    <section className="flex items-center justify-center px-10 w-full">
+    <section className="flex items-center justify-center w-full">
       <div className="flex flex-1 flex-col items-center justify-center py-8">
         <div className="inner-md w-full">
           <div className="pb-5 border-b border-black">
